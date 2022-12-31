@@ -242,8 +242,6 @@
         var years = days * 365
         var today = new Date()
         var todayYear = today.getFullYear()
-        var newYear=todayYear
-        var lastYear=todayYear-1
         var todayMonth = today.getMonth() + 1
         var todayDate = today.getDate()
         var todayHour = today.getHours()
@@ -252,7 +250,7 @@
         var t1 = Date.UTC(newYear, 1, 22, 0, 00, 00)
         var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond)
         var diff = t1 - t2
-        var diff2 = t2-t1
+        var diff2 = t2 - t1
         var diffYears = Math.floor(diff / years)
         var diffDays = Math.floor((diff / days) - diffYears * 365)
         var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours)
@@ -265,13 +263,10 @@
         var diff2Minutes = Math.floor((diff2 - (diff2Years * 365 + diff2Days) * days - diff2Hours * hours) / minutes)
         var diff2Seconds = Math.floor((diff2 - (diff2Years * 365 + diff2Days) * days - diff2Hours * hours - diff2Minutes *
             minutes) / seconds)
-        if(todayMonth==1){
-            if(todayDate==22){
-		    document.getElementById("text1").innerHTML =  "现在是1月22日,祝你"+todayYear+"新年快乐！"
-	    }
-	}else{
-            document.getElementById("text1").innerHTML =  "提前祝你"+name+newYear+"新年快乐"
-	    }
+        if(todayMonth==1 && todayDate==22){
+                document.getElementById("text1").innerHTML =  "现在是1月22日,祝你"+todayYear+"新年快乐！"
+        }else{
+            document.getElementById("text1").innerHTML =  "提前祝你"+name+todayYear+"新年快乐"
         }
         document.getElementById("time").innerHTML =  diffDays + "天" + diffHours + "小时" + diffMinutes + "分钟" + diffSeconds + "秒" +"就新年了"
 }
